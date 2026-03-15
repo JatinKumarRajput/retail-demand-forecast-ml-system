@@ -1,0 +1,7 @@
+mlruns
+data
+notebooks
+__pycache__
+*.pyc
+.git
+.gitignore

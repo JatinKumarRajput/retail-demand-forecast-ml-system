@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Retail Demand Forecasting</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#eef2f7;
+margin:0;
+}
+
+.header{
+background:#2c7be5;
+color:white;
+padding:25px;
+text-align:center;
+}
+
+.container{
+width:750px;
+margin:auto;
+background:white;
+padding:30px;
+margin-top:30px;
+border-radius:10px;
+box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+}
+
+h2{
+color:#2c7be5;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#2c7be5;
+color:white;
+border:none;
+font-size:16px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1a5ed8;
+}
+
+.result{
+background:#f0f7ff;
+padding:15px;
+border-radius:6px;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+<h1>Retail Demand Forecasting System</h1>
+<p>Predict product demand using Machine Learning</p>
+</div>
+
+<div class="container">
+
+<h2>About the Project</h2>
+
+<p>
+This system predicts retail product demand using a Machine Learning model trained on historical sales data.
+It uses advanced feature engineering such as lag features, rolling averages, and promotion signals.
+The model was trained using XGBoost and tracked with MLflow.
+</p>
+
+<h2>Enter Sales Information</h2>
+
+<form action="/predict" method="post">
+
+<label>Product ID</label>
+<input type="number" name="id" required>
+
+<label>Store</label>
+<select name="store_nbr">
+<option value="1">Store 1</option>
+<option value="2">Store 2</option>
+<option value="3">Store 3</option>
+</select>
+
+<label>Promotion Status</label>
+<select name="onpromotion">
+<option value="0">No Promotion</option>
+<option value="1">On Promotion</option>
+</select>
+
+<label>Day of Week</label>
+<select name="day_of_week">
+<option value="0">Monday</option>
+<option value="1">Tuesday</option>
+<option value="2">Wednesday</option>
+<option value="3">Thursday</option>
+<option value="4">Friday</option>
+<option value="5">Saturday</option>
+<option value="6">Sunday</option>
+</select>
+
+<label>Month</label>
+<input type="number" name="month" placeholder="1-12">
+
+<label>Year</label>
+<input type="number" name="year" value="2017">
+
+<label>Weekend?</label>
+<select name="is_weekend">
+<option value="0">Weekday</option>
+<option value="1">Weekend</option>
+</select>
+
+<label>Yesterday Sales</label>
+<input type="number" name="lag_1">
+
+<label>Last Week Sales</label>
+<input type="number" name="lag_7">
+
+<label>7-Day Average Sales</label>
+<input type="number" name="rolling_mean_7">
+
+<label>Product Category</label>
+<select name="family">
+
+<option>AUTOMOTIVE</option>
+<option>BEVERAGES</option>
+<option>DAIRY</option>
+<option>BREAD/BAKERY</option>
+<option>PRODUCE</option>
+<option>SEAFOOD</option>
+<option>MEATS</option>
+<option>PERSONAL CARE</option>
+
+</select>
+
+<button type="submit">Predict Demand</button>
+
+</form>
+
+<div class="result">
+
+<h3>{{ prediction_text }}</h3>
+<p>{{ insight_text }}</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
