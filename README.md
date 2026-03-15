@@ -291,6 +291,14 @@ Graphic Era Hill University, Dehradun
 
 ---
 
-# License
+# Screenshots
 
-This project is licensed under the **MIT License**.
+![UI Screenshot](images/ui.png)
+
+![prediction Screenshot](images/prediction.png)
+
+![MLflow Screenshot](images/mlflow.png)
+
+![MLflow Screenshot](images/mlflow2.png)
+
+![Docker Screenshot](images/docker.png)
